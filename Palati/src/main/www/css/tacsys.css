@@ -1,0 +1,134 @@
+/*
+* @author: Angad Salaria
+* @since: 11/09/2013
+*/
+
+#notification-container{
+	position: fixed; 
+	right: 10px; 
+	bottom: 10px;
+	z-index: 2;
+}
+
+#notification-container>div{
+	background-position: 15px center;
+	background-repeat: no-repeat; 
+	width:300px; 
+	margin-top:10px;
+	border-radius: 3px 3px 3px;
+	box-shadow: 0 0 12px #999999;
+	color: #FFFFFF;
+	opacity: 0.9;
+	padding: 15px 15px 15px 50px;
+}
+
+#notification-container>div:before{
+	content: 'click to dismiss';
+	font-size: 9px;
+	float: right;
+	margin-top:-10px;
+}
+
+
+#notification-container>div.Success{
+	background-image: url('../images/success.png');
+	background-color: #51A351;
+}
+#notification-container>div.Error{
+	background-image: url('../images/error.png');
+	background-color: #BD362F;
+}
+#notification-container>div.Warning{
+	background-image: url('../images/alert.png');
+	background-color: #F89406;
+}
+#notification-container>div.Info{
+	background-image: url('../images/info.png');
+	background-color: #2F96B4;
+}
+.floatRight{
+	float: right;
+}
+
+.accountBarometer{
+	font-weight: bold; 
+	font-size: 12px;
+}
+
+
+.progress .progress-bar sr-only{
+	position:inherit;
+}
+
+
+.ng-dirty.ng-invalid{
+	border-color: #E9322D;
+	box-shadow: 0 0 6px #F8B9B7;
+}
+form.ng-invalid{
+	box-shadow: none !important;
+}
+
+
+.modals{
+	background-clip: padding-box;
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 6px;
+	box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+	left:50%;
+	margin-left: -280px;
+	outline: 0 none;
+	position: fixed;
+	top: 25%;
+	width: 560px;
+	z-index: 1050;
+}
+.modals.fade.in{
+	top: 25%;
+}
+.modals.fade{
+	top: -25%;
+	transition: opacity 0.3s linear 0s, top 0.15s ease-out 0s;
+}
+.modals-backdrop{
+	background-color: #000000;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1040;
+}
+.modals-backdrop,.modals-backdrop.fade.in{
+	opacity: 0.4;
+}
+.modals-backdrop.fade{
+	opacity: 0;
+}
+
+/*Bootstrap overrides*/
+.list-group > a.disabled {
+  color: #999999;
+  text-decoration: none;
+  background-color: transparent;
+  pointer-events:none;
+  
+}
+
+.prog-success > div{
+	background-color: #5CB85C;
+}
+.prog-danger > div{
+	background-color: #D9534F;
+}
+.prog-warning > div{
+	background-color: #F0AD4E;
+}
+.progress{
+	margin-bottom: 10px;
+}
+
+.panel-body.form{
+	background-color: #F5F5F5;
+}

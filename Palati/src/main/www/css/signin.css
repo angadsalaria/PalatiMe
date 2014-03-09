@@ -1,0 +1,50 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  *background-color: #eee;
+  background: url('../images/paws.jpg');
+}
+.tac-banner{
+	background: white;
+	text-align: center;
+	max-width: 400px;
+	font-size: 21px;
+	color: orangerod;
+	border: 1px solid #C0C0C0;
+	padding: 10px;
+	margin: 0 auto;
+	border-radius: 8px;
+	font-family: cursive;
+	display: none;
+}
+.login-container{
+	background: white;
+	border: 1px solid #C0C0C0;
+	border-radius: 8px;
+	padding: 1px 20px 20px 20px;
+}
+
+.form-signin {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+  }
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}

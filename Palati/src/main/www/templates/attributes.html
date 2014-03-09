@@ -1,0 +1,41 @@
+
+<div class="modal" ng-controller="AttributesCtrl">
+	<header class="bar bar-header bar-stable">
+		<button class="button button-clear button-primary icon ion-ios7-reload"
+			ng-click="attributeReset()"></button>
+	
+		<h1 class="title">Attributes List</h1>
+		<button class="button button-clear button-primary ion-android-arrow-up-right"
+			ng-click="modal.hide()">&nbsp;</button>
+	</header>
+<ion-content has-header="true" padding="true">
+      
+      <div class="list">
+        
+        <div class="item item-divider"> 
+          Basic
+        </div>
+        
+        <ion-toggle ng-repeat="item in basicList"
+                    ng-model="item.checked" 
+                    ng-checked="item.checked">
+          {{ item.text }}
+        </ion-toggle>
+        
+        
+        <div class="item item-divider"> 
+          Extended
+        </div>
+         <ion-toggle ng-repeat="item in extendedList"
+                    ng-model="item.checked" 
+                    ng-checked="item.checked">
+          {{ item.text }}
+        </ion-toggle>
+      </div>
+
+    </ion-content>
+</div>
+
+
+             
+    

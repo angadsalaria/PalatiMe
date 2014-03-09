@@ -1,0 +1,26 @@
+/*
+* @author: Angad Salaria
+* @since: 11/15/2013
+*/
+
+/*Bootstrap Overrides*/
+.datepicker .btn.disabled,.datepicker .btn[disabled]{
+	background-color: #E6E6E6;
+	color: #333333;
+	background-image: none !important;
+}
+
+.datepicker td .btn{
+	background-image: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+	border-color: #CCCCCC #CCCCCC #B3B3B3;	
+}
+
+.datepicker td .btn-info{
+	background-image: linear-gradient(to bottom, #5BC0DE, #2F96B4);
+	background-color: #49AFCD;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.muted{
+	color: #999999;
+}
