@@ -84,65 +84,39 @@ angular.module('palati.controllers', [])
 
 
 //A simple controller that shows a tapped item's data
-.controller('WineDetailCtrl', function($scope, $stateParams, $ionicModal, WineService) {
+.controller('WineDetailCtrl', function($scope, $stateParams, $rootScope, $ionicModal, WineService) {
 	// "WineService" is a service returning mock data (services.js)
-	$scope.wine = WineService.get($stateParams.wineId);
+	$rootScope.wine = WineService.get($stateParams.wineId);
 
-	$scope.palatiAttributes = [{type: 'button-icon ion-waterdrop', tap: function(e) {$scope.modal.show();}}];
-	$scope.wineAttributes = function(){
-		var scope = $scope;
+	$scope.attributesBtn = [{type: 'button-icon ion-waterdrop', tap: function(e) {$scope.modal.show();}}];
 
-		return [1,2];
-	};
 	$ionicModal.fromTemplateUrl('templates/attributes.html', function(modal) {
-		$scope.modal = modal;}, 
+		$scope.modal = modal;
+		}, 
 		{
 			animation: 'slide-in-up',
 			focusFirstInput: true
 		});
+	
+	
+
 })
 
-.controller('AttributesCtrl', function($scope) {
-
-	$scope.basicList = [
-	                    { text: "Body", checked: true },
-	                    { text: "Sweetness", checked: true },
-	                    { text: "Tannin", checked: true },
-	                    { text: "Fruit", checked: true },
-	                    { text: "Acid", checked: true }
-	                    ];
-	$scope.extendedList = [
-	                       { text: "Aging", checked: false },
-	                       //    { text: "Aggressive", checked: false },
-	                       //    { text: "Angular", checked: false },
-	                       { text: "Austere", checked: false },
-	                       //    { text: "Backbone", checked: false },
-	                       //    { text: "Backward", checked: false },
-	                       { text: "Balanced", checked: false },
-	                       //    { text: "Big", checked: false },
-	                       { text: "Bitter", checked: false },
-	                       //     { text: "Brawny", checked: false },
-	                       { text: "Brooding", checked: false },
-	                       { text: "Buttery", checked: false },
-	                       //     { text: "Clean", checked: false },
-	                       { text: "Coarse", checked: false },
-	                       { text: "Creamy", checked: false },
-	                       //     { text: "Dense", checked: false },
-	                       { text: "Fading", checked: false },
-	                       { text: "Flat", checked: false },
-	                       { text: "Floral", checked: false },
-	                       { text: "Forward", checked: false },
-	                       //    { text: "Green", checked: false },
-	                       { text: "Herbaceous", checked: false },
-	                       { text: "Length", checked: false },
-	                       { text: "Oaky", checked: false },
-	                       //    { text: "Peppery", checked: false },
-	                       { text: "Smoky", checked: false },
-	                       { text: "Tannic", checked: false },
-	                       //    { text: "Velvety", checked: false }
-
-	                       ];
-
+.controller('AttributesCtrl', function($scope, $rootScope, AttributesService) {
+	
+	if(!angular.isDefined($rootScope.wine.basicList)){
+		$rootScope.wine['basicList'] = AttributesService.getBasicList();
+	}
+	if(!angular.isDefined($rootScope.wine.extendedList)){
+		$rootScope.wine['extendedList'] = AttributesService.getExtendedList();
+	}
+	$scope.basicList = $rootScope.wine.basicList;
+	$scope.extendedList = $rootScope.wine.extendedList;
+	
+	//$scope.basicList = AttributesService.getBasicList();
+	
+	//$scope.extendedList = AttributesService.getExtendedList();
+	
 	$scope.attributeReset = function(){
 		angular.forEach($scope.basicList, function(value, key){
 			value.checked=true;
@@ -156,5 +130,7 @@ angular.module('palati.controllers', [])
 
 		$scope.modal.hide();
 	};
+	
+
 
 });
