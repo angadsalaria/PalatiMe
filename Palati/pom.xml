@@ -23,7 +23,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<warName>TacSys</warName>
+					<warName>Palati</warName>
 					<webappDirectory>${basedir}/src/main/webapp</webappDirectory>
 					<warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
 					<compilerVersion>7.0</compilerVersion>

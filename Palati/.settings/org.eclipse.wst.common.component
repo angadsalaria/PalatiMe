@@ -2,8 +2,8 @@
     <wb-module deploy-name="Palati">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/www"/>
         <property name="java-output-path" value="/Palati/build/classes"/>
-        <property name="context-root" value="TacSys"/>
+        <property name="context-root" value="Palati"/>
     </wb-module>
 </project-modules>
