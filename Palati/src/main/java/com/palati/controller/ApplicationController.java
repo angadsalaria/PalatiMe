@@ -31,7 +31,7 @@ public class ApplicationController {
 	@ResponseBody
 	@RequestMapping(value = "/testConnection.do", method = RequestMethod.GET)
 	public String testConn(HttpServletRequest request) throws IOException {
-		List<Names> names = namesDao.getNames();
+		//List<Names> names = namesDao.getNames();
 		return "Success. Yayy!!!";
 	}
 }

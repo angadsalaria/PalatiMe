@@ -21,7 +21,7 @@ public class AppCommonConfig {
 
 	@Bean
 	public MongoDbFactory mongoDbFactory() throws UnknownHostException{
-		return new SimpleMongoDbFactory(new MongoClient("127.0.0.1"), "names");
+		return new SimpleMongoDbFactory(new MongoClient("127.0.0.1"), "palatime");
 	}
 
 	@Bean

@@ -18,6 +18,13 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
 	};
 })
 
+//Pull in the wine attributes list on application load.
+.run(function(AttributesService){
+	AttributesService.initialize();
+})
+
+.constant('baseURL', 'http://192.168.1.11:8080/Palati/')
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
