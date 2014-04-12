@@ -80,6 +80,14 @@ angular.module('palati.controllers', [])
 .controller('WineIndexCtrl', function($scope, WineService) {
 	// "WineService" is a service returning mock data (services.js)
 	$scope.wines = WineService.all();
+	$scope.winery = 'Test Winery';
+	$scope.saveVisit = function(){
+		var tasting = {};
+		visit['wines'] = $scope.wines;
+		visit['winery'] = $scope.winery;
+		visit['date'] = new Date();
+		console.log($scope.wines);
+	};
 })
 
 
