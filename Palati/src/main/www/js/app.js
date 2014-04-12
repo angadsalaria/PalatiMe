@@ -23,7 +23,7 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
 	AttributesService.initialize();
 })
 
-.constant('baseURL', 'http://192.168.1.11:8080/Palati/')
+.constant('baseURL', 'http://192.168.1.36:8080/Palati/')
 
 .config(function($stateProvider, $urlRouterProvider) {
 
