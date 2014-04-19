@@ -40,15 +40,14 @@ angular.module('palati.controllers', [])
 
 })
 
-.controller('SignOutCtrl', function($scope, $state) {
-	var auth0 = new Auth0Client(
-		    "palatime.auth0.com",
-		    "t36ibpYH70xL1KyBEPAURJLI4sAJcPlG");
-	auth0.logout(function(){
+.controller('SignOutCtrl', function($scope, AuthService, AuthProvider) {
+	
+	AuthProvider.client().logout(function(){
 		
-		$state.go('login');	
+		AuthService.logout();	
+	
 	});
-	//$location.path('/login');
+	
 	  
 })
 

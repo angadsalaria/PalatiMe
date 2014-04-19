@@ -1,7 +1,7 @@
 angular.module('palati.services', [])
 
 
-.factory('AuthService', function($http, baseURL, $state){
+.factory('AuthService', function($http, baseURL, $state, AuthProvider){
 	var user = null;
 	return{
 		setUser: function(loggedInUser){
@@ -26,6 +26,14 @@ angular.module('palati.services', [])
 
 			},function(error){
 				$state.go('login');
+			});
+		},
+		logout: function(){
+			$http({method: 'GET', url: 'https://palatime.auth0.com/logout'})
+			.then(function(success){
+				$state.go('login');
+			},function(error){
+				
 			});
 		}
 	

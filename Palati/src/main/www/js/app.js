@@ -68,20 +68,20 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
       }
     })
 
-    .state('tab.register', {
-      url: '/register',
+    .state('tab.archive', {
+      url: '/archive',
       views: {
-        'register-tab': {
-          templateUrl: 'templates/register.html'
+        'archive-tab': {
+          templateUrl: 'templates/archive.html'
         }
       }
     })
 
-    .state('tab.about', {
-      url: '/about',
+    .state('tab.winery', {
+      url: '/winery',
       views: {
-        'about-tab': {
-          templateUrl: 'templates/about.html'
+        'winery-tab': {
+          templateUrl: 'templates/winery.html'
         }
       }
     });
