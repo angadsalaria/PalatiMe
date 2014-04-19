@@ -41,13 +41,8 @@ angular.module('palati.controllers', [])
 })
 
 .controller('SignOutCtrl', function($scope, AuthService, AuthProvider) {
-	
-	AuthProvider.client().logout(function(){
 		
 		AuthService.logout();	
-	
-	});
-	
 	  
 })
 

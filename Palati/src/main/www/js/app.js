@@ -12,6 +12,9 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
 	return {
 		client: function(){
 			return auth0;
+		},
+		getLogoutURL: function(){
+			return "https://palatime.auth0.com/logout";
 		}
 	};
 })
