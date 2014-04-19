@@ -1,5 +1,37 @@
 angular.module('palati.services', [])
 
+
+.factory('AuthService', function($http, baseURL, $state){
+	var user = null;
+	return{
+		setUser: function(loggedInUser){
+			user = loggedInUser;
+		},
+		unSetUser: function(){
+			user = null;
+		},
+		getToken: function(){
+			return user.idToken;
+		},
+		getUserName: function(){
+			return user.profile.given_name+' '+user.profile.family_name;
+		},
+		isUserLoggedIn : function(){
+			return user != null;
+		},
+		verify: function(){
+			
+			$http({method: 'GET', url: baseURL + 'verifyToken.do', params: {token : user.idToken}})
+			.then(function(success){
+
+			},function(error){
+				$state.go('login');
+			});
+		}
+	
+	};
+})
+
 /**
  * A simple example service that returns some data.
  */

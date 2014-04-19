@@ -4,16 +4,14 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
-.factory('authProvider', function(){
-	var widget = new Auth0Widget({
-		domain:         'palatime.auth0.com',
-		clientID:       't36ibpYH70xL1KyBEPAURJLI4sAJcPlG',
-		callbackURL:    'https://palatime.auth0.com/mobile'
-	});
+.factory('AuthProvider', function(){
+	var auth0 = new Auth0Client(
+		    "palatime.auth0.com",
+		    "t36ibpYH70xL1KyBEPAURJLI4sAJcPlG");
 	
 	return {
-		signIn: function(){
-			
+		client: function(){
+			return auth0;
 		}
 	};
 })
@@ -23,7 +21,7 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
 	AttributesService.initialize();
 })
 
-.constant('baseURL', 'http://192.168.1.36:8080/Palati/')
+.constant('baseURL', 'http://192.168.1.11:8080/Palati/')
 
 .config(function($stateProvider, $urlRouterProvider) {
 

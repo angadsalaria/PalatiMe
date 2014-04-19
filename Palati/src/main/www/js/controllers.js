@@ -1,36 +1,35 @@
 angular.module('palati.controllers', [])
 
-.controller('SignInCtrl', function($scope, $state) {
-	var auth0 = new Auth0Client(
-		    "palatime.auth0.com",
-		    "t36ibpYH70xL1KyBEPAURJLI4sAJcPlG");
+.controller('SignInCtrl', function($scope, $state, AuthService, AuthProvider) {
 	
 	$scope.googleSignIn = function(){
-		auth0.login({connection: 'google-oauth2'}, function(err,result){
+		AuthProvider.client().login({connection: 'google-oauth2', scope: 'openid email name'}, function(err,result){
 			if(err){
 				alert('Error login');
 			}
 			else{
-				 
+				 AuthService.setUser(result);
 				 $state.go('tab.wine-index');
 			}
 		}); 
 	};
 	$scope.facebookSignIn = function(){
-		auth0.login({connection: 'facebook'}, function(err,result){
+		AuthProvider.client().login({connection: 'facebook', scope: 'openid email name'}, function(err,result){
 			if(err){
 				alert('Error login');
 			}
 			else{
-				 $state.go('tab.wine-index');
+				AuthService.setUser(result);
+				$state.go('tab.wine-index');
 			}
 		}); 
 	};
-	
-	 var loggedInUser = auth0.getCurrentUser();
+		
+	 var loggedInUser = AuthProvider.client().getCurrentUser();
      if (loggedInUser) {
+    	AuthService.setUser(loggedInUser);
      	$state.go('tab.wine-index');
-     	alert('in loggedInUser()');
+     	AuthService.verify();
      }
      
    
@@ -38,29 +37,6 @@ angular.module('palati.controllers', [])
 	$scope.quickPullUp = function(){
       	$state.go('tab.wine-index');
 	};
-
-	/*	  $scope.signIn = function(user) {
-		  var domain        = 'contoso.auth0.com';
-	        var clientId      = 'KPmb7b0Pps5jwzBRTc3wJzR9zQeCfDr5';
-
-	        var auth0Client = new Auth0Client(domain, clientId);
-	        var loggedInUser = auth0Client.getCurrentUser();
-            if (loggedInUser) {
-            	alert(loggedInUser);
-            	alert(angular.toJson(auth0Client));
-            	$state.go('tab.wine-index');
-            }
-            else {
-            	auth0Client.login(function (err, auth0User) {
-    	            if (err) {
-    	            	alert('error');
-    	            }
-    	            else {
-    	                alert(angular.toJson(auth0User));
-    	            }
-    	        });
-            }
-	  };*/
 
 })
 
