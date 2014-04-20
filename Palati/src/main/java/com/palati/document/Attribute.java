@@ -48,6 +48,5 @@ public class Attribute {
 		this.factor = factor;
 	}
 	
-	
 
 }

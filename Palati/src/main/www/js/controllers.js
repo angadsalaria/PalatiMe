@@ -114,7 +114,7 @@ angular.module('palati.controllers', [])
 })
 
 
-.controller('WineryCtrl', function($scope, $rootScope, AttributesService) {
+.controller('WineryCtrl', function($scope, $rootScope, AttributesService, $http) {
 	
 	$scope.lookupWinery = function() {
 
@@ -125,7 +125,10 @@ angular.module('palati.controllers', [])
             alert("We got a "+result.format+"\n" + 
             "Result: " + result.text + "\n" +             
             "Cancelled: " + result.cancelled);  
-
+            
+            if(result.cancelled){
+            	
+            }
            
             /*
             if (args.format == "QR_CODE") {

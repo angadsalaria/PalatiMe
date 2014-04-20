@@ -45,7 +45,7 @@ angular.module('palati.services', [])
  */
 .factory('WineService', function() {
 	// Might use a resource here that returns a JSON array
-
+	var winery = null;
 	// Some fake testing data
 	var wines = [
 	             { id: 0, title: 'Veuve Clique Champagne, France', description: 'A blend of Pinot Noir, Pinot Meunier and Chardonnay with a rich, creamy texture and round balance.' },
