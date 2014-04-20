@@ -4,21 +4,21 @@ package com.palati.document;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "winery")
 public class Winery {
 	
 	@Id
-	private String id;
+	private Integer id;
 	private String name;
 	private String addrLine1;
 	private String addrCity;
 	private String addrState;
 	private String addrZip;
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

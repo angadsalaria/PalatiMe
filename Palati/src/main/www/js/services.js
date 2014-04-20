@@ -7,12 +7,6 @@ angular.module('palati.services', [])
 		setUser: function(loggedInUser){
 			user = loggedInUser;
 		},
-		unSetUser: function(){
-			user = null;
-		},
-		getToken: function(){
-			return user.idToken;
-		},
 		getUserName: function(){
 			return user.profile.given_name+' '+user.profile.family_name;
 		},
@@ -25,25 +19,17 @@ angular.module('palati.services', [])
 			.then(function(success){},function(error){});
 		},
 		logout: function(){
-			
 			AuthProvider.client().logout(function(){
-
 				$http({method: 'GET', url: AuthProvider.getLogoutURL()})
 				.then(function(success){
 					$state.go('login');
 				},function(error){});
-
-
 			});
 		}
-
 	};
 })
 
-/**
- * A simple example service that returns some data.
- */
-.factory('WineService', function() {
+.factory('WineService', function($http, $state, baseURL) {
 	// Might use a resource here that returns a JSON array
 	var winery = null;
 	// Some fake testing data
@@ -64,8 +50,16 @@ angular.module('palati.services', [])
 			// Simple index lookup
 			return wines[wineId];
 		},
-		put: function(wineId, wine){
-			wines[wineId] = wine;
+		initialize: function(wineryId){
+			$http({method: 'GET', url: baseURL + 'getWineryDetails.do', params: {wineryId : wineryId}})
+			.then(function(success){
+				winery = success.data.winery;
+				wines = success.data.wines;
+				$state.go('tab.wine-index');
+			},function(error){});
+		},
+		getWinery: function(){
+			return winery;
 		}
 	};
 })
@@ -95,4 +89,32 @@ angular.module('palati.services', [])
 			initialize();
 		}
 	};
-});
+})
+
+.factory('QRLkpService', function(WineService) {
+	return {
+		lookup: function() {
+			
+			var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+	        scanner.scan( function (result) {
+	         /*   alert("We got a "+result.format+"\n" + 
+	            "Result: " + result.text + "\n" +             
+	            "Cancelled: " + result.cancelled); */ 
+	        	if(result.text!=null){
+	        		WineService.initialize(result.text);
+	        	}
+	        	else
+	            if(result.cancelled){
+	            	WineService.initialize(10001);
+	            }
+	        }, function (error) { 
+	            alert("Scanning failed: " + error); 
+	        } );
+		},
+		devQuickLkp: function(){
+			WineService.initialize(10001);
+		}
+	};
+})
+
+;

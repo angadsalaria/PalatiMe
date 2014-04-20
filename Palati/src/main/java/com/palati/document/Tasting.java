@@ -14,6 +14,7 @@ public class Tasting {
 	private List<Wine> wines;
 	private Date date;
 	private List<String> metadata;
+	private String user;
 	@DBRef
 	private Winery winery;
 	
@@ -46,6 +47,13 @@ public class Tasting {
 	}
 	public void setMetadata(List<String> metadata) {
 		this.metadata = metadata;
+	}
+	
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
 	}
 	public Winery getWinery() {
 		return winery;
