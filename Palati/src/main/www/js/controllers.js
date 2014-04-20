@@ -50,7 +50,7 @@ angular.module('palati.controllers', [])
 .controller('WineIndexCtrl', function($scope, WineService) {
 	// "WineService" is a service returning mock data (services.js)
 	$scope.wines = WineService.all();
-	$scope.winery = 'Test Winery';
+	$scope.winery = 'Trump Winery';
 	$scope.saveVisit = function(){
 		var tasting = {};
 		visit['wines'] = $scope.wines;
@@ -107,6 +107,36 @@ angular.module('palati.controllers', [])
 	$scope.exitModal = function() {
 
 		$scope.modal.hide();
+	};
+	
+
+
+})
+
+
+.controller('WineryCtrl', function($scope, $rootScope, AttributesService) {
+	
+	$scope.lookupWinery = function() {
+
+		var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+        scanner.scan( function (result) { 
+
+            alert("We got a "+result.format+"\n" + 
+            "Result: " + result.text + "\n" +             
+            "Cancelled: " + result.cancelled);  
+
+           
+            /*
+            if (args.format == "QR_CODE") {
+                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
+            }
+            */
+
+        }, function (error) { 
+            console.log("Scanning failed: ", error); 
+        } );
+        
 	};
 	
 

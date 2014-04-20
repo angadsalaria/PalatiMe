@@ -79,12 +79,23 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
         }
       }
     })
+    
+    .state('tab.archived-tasting', {
+      url: '/tasting/:tastingId',
+      views: {
+        'wines-tab': {
+          templateUrl: 'templates/archived-tasting.html',
+          controller: 'WineDetailCtrl'
+        }
+      }
+    })
 
     .state('tab.winery', {
       url: '/winery',
       views: {
         'winery-tab': {
-          templateUrl: 'templates/winery.html'
+          templateUrl: 'templates/winery.html',
+          controller: 'WineryCtrl'
         }
       }
     });

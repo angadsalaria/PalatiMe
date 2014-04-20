@@ -1,0 +1,35 @@
+<!--
+  This template loads for the 'tab.wine-detail' state (app.js)
+  'wine' is a $scope variable created in the WineCtrl controller (controllers.js)
+  The WineCtrl pulls data from the Wines service (service.js)
+  The WineService returns an array of wine data
+-->
+<ion-view title="{{tasting.winery.name}}-{{tasting.date | date}}"> 
+
+	<ion-content has-header="true" padding="true">
+		<div class="card">
+			<div class="item item-text-wrap">
+				<p>PalatiMe for {{tasting.winery.wines.length}} wines at {{ tasting.winery.name }} tasted on {{tasting.date}}</p>
+			</div>
+		</div>
+
+	<div class="list list-inset">
+      <div class="item item-divider"> 
+          Wines
+        </div>
+     </div>
+     <ion-list>
+
+      <ion-item ng-repeat="wine in tasting.winery.wines" type="item-text-wrap" href="#/tab/wine/{{wine.id}}">
+       	<h3>{{wine.title}}</h3>
+        <p>{{wine.description}}</p>
+      </ion-item>
+      
+    </ion-list>
+	
+
+
+	
+
+</ion-content> 
+</ion-view>

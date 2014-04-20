@@ -29,7 +29,9 @@ angular.module('palati.services', [])
 			AuthProvider.client().logout(function(){
 
 				$http({method: 'GET', url: AuthProvider.getLogoutURL()})
-				.then(function(success){},function(error){});
+				.then(function(success){
+					$state.go('login');
+				},function(error){});
 
 
 			});

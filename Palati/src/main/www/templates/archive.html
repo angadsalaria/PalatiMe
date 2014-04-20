@@ -3,21 +3,24 @@
 -->
 <ion-view title="Archive">
   <ion-content has-header="true" has-tabs="true">
+  	<div class="list list-inset">
+	  <label class="item item-input">
+	    <i class="icon ion-search placeholder-icon"></i>
+	    <input type="text" placeholder="Search Zip">
+	  </label>
+	</div>
     <div class="list list-inset">
-      <label class="item item-input">
-        <span class="input-label">Name</span>
-        <input type="text">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Email</span>
-        <input type="email">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        <input type="password">
-      </label>
-      <ion-toggle>Subscribe To Newsletter</ion-toggle>
-      <button class="button button-positive button-block">Create Account</button>
-    </div>
+      <div class="item item-divider"> 
+          Recent Visits
+        </div>
+     </div>
+     <ion-list>
+
+      <ion-item ng-repeat="tasting in tastings" type="item-text-wrap" href="#/tab/tasting/{{tasting.id}}">
+        <h3>{{tasting.winery.name}}, {{tasting.winery.addrCity}}, {{tasting.winery.addrState}}</h3>
+        <p><i>Visited on {{tasting.date | date}}</i></p>
+      </ion-item>
+      
+    </ion-list>
   </ion-content>
 </ion-view>
