@@ -32,7 +32,7 @@ public class TastingController {
 	@ResponseBody
 	@RequestMapping(value = "/saveTasting.do", method = RequestMethod.POST)
 	public String saveTasting(HttpServletRequest request, @RequestBody Tasting tasting) {
-		String response = "";
+		String response = tastingDao.saveTasting(tasting);
 		return response;
 	}
 }

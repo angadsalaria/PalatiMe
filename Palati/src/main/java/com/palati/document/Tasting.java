@@ -10,7 +10,7 @@ public class Tasting {
 	
 	@Id
 	private String Id;
-	private String wineryId;
+	private Integer wineryId;
 	private List<Wine> wines;
 	private Date date;
 	private List<String> metadata;
@@ -24,10 +24,10 @@ public class Tasting {
 	public void setId(String id) {
 		Id = id;
 	}
-	public String getWineryId() {
+	public Integer getWineryId() {
 		return wineryId;
 	}
-	public void setWineryId(String wineryId) {
+	public void setWineryId(Integer wineryId) {
 		this.wineryId = wineryId;
 	}
 	public List<Wine> getWines() {

@@ -22,4 +22,11 @@ public class TastingDao {
 		List<Tasting> tasting = mongoTemplate.find(query, Tasting.class);
 		return tasting;
 	}
+	
+	public String saveTasting(Tasting tasting){
+		
+		mongoTemplate.save(tasting);
+		return "success";
+		
+	}
 }
