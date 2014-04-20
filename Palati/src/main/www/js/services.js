@@ -28,7 +28,7 @@ angular.module('palati.services', [])
 		}
 	};
 })
-
+/** WineService with singleton variables 'winery' and 'wines' **/
 .factory('WineService', function($http, $state, baseURL) {
 	// Might use a resource here that returns a JSON array
 	var winery = null;
@@ -100,7 +100,7 @@ angular.module('palati.services', [])
 	         /*   alert("We got a "+result.format+"\n" + 
 	            "Result: " + result.text + "\n" +             
 	            "Cancelled: " + result.cancelled); */ 
-	        	if(result.text!=null){
+	        	if(result.text!=null && result.text!=''){
 	        		WineService.initialize(result.text);
 	        	}
 	        	else
@@ -110,9 +110,6 @@ angular.module('palati.services', [])
 	        }, function (error) { 
 	            alert("Scanning failed: " + error); 
 	        } );
-		},
-		devQuickLkp: function(){
-			WineService.initialize(10001);
 		}
 	};
 })

@@ -1,6 +1,6 @@
 angular.module('palati.controllers', [])
 
-.controller('SignInCtrl', function($scope, $state, AuthService, AuthProvider) {
+.controller('SignInCtrl', function($scope, $state, AuthService, AuthProvider, QRLkpService) {
 	
 	$scope.googleSignIn = function(){
 		AuthProvider.client().login({connection: 'google-oauth2', scope: 'openid email name'}, function(err,result){
@@ -35,7 +35,7 @@ angular.module('palati.controllers', [])
    
 	
 	$scope.quickPullUp = function(){
-      	$state.go('tab.wine-index');
+		QRLkpService.lookup();
 	};
 
 })
