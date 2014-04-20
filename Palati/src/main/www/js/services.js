@@ -10,6 +10,9 @@ angular.module('palati.services', [])
 		getUserName: function(){
 			return user.profile.given_name+' '+user.profile.family_name;
 		},
+		getToken: function(){
+			return user.idToken;
+		},
 		isUserLoggedIn : function(){
 			return user != null;
 		},
@@ -46,9 +49,9 @@ angular.module('palati.services', [])
 		all: function() {
 			return wines;
 		},
-		get: function(wineId) {
+		get: function(wineSeqNum) {
 			// Simple index lookup
-			return wines[wineId];
+			return wines[wineSeqNum];
 		},
 		initialize: function(wineryId){
 			$http({method: 'GET', url: baseURL + 'getWineryDetails.do', params: {wineryId : wineryId}})
@@ -91,6 +94,20 @@ angular.module('palati.services', [])
 	};
 })
 
+.factory('TastingService', function($http,baseURL, AuthService) {
+	return {
+		lookupTasting: function() {
+			
+		},
+		saveTasting: function(tasting){
+			$http({method: 'POST', url: baseURL + 'saveTasting.do', data: {tasting: tasting}})
+			.then(function(success){
+				
+			},function(error){});
+		}
+	};
+})
+
 .factory('QRLkpService', function(WineService) {
 	return {
 		lookup: function() {
@@ -110,6 +127,9 @@ angular.module('palati.services', [])
 	        }, function (error) { 
 	            alert("Scanning failed: " + error); 
 	        } );
+		},
+		devLookup: function(){
+			WineService.initialize(10001);
 		}
 	};
 })

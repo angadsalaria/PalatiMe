@@ -8,7 +8,7 @@
 
     <ion-list>
 
-      <ion-item ng-repeat="wine in wines" type="item-text-wrap" href="#/tab/wine/{{wine.id}}">
+      <ion-item ng-repeat="wine in wines" type="item-text-wrap" href="#/tab/wine/{{wine.seqNum}}">
         <h3>{{wine.title}}</h3>
         <p>{{wine.description}}</p>
       </ion-item>
@@ -17,7 +17,7 @@
 
 <div class="padding">
 	<button class="button button-block button-balanced"
-		ng-click="saveVisit()">
+		ng-click="saveTasting()">
 		<span class="icon ion-ios7-cloud-upload-outline pad-right"></span>Save
 	</button>
 </div>

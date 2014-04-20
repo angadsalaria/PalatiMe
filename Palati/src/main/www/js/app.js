@@ -62,7 +62,7 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
     })
 
     .state('tab.wine-detail', {
-      url: '/wine/:wineId',
+      url: '/wine/:wineSeqNum',
       views: {
         'wines-tab': {
           templateUrl: 'templates/wine-detail.html',

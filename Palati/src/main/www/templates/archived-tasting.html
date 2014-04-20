@@ -20,16 +20,11 @@
      </div>
      <ion-list>
 
-      <ion-item ng-repeat="wine in tasting.winery.wines" type="item-text-wrap" href="#/tab/wine/{{wine.id}}">
+      <ion-item ng-repeat="wine in tasting.winery.wines" type="item-text-wrap" href="#/tab/wine/{{wine.seqNum}}">
        	<h3>{{wine.title}}</h3>
         <p>{{wine.description}}</p>
       </ion-item>
       
     </ion-list>
-	
-
-
-	
-
 </ion-content> 
 </ion-view>

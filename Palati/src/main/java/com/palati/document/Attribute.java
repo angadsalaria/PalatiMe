@@ -14,7 +14,7 @@ public class Attribute {
 	private String text;
 	private String type;
 	private Boolean checked;
-	private Integer factor;
+	private String factor;
 	
 	public String getId() {
 		return Id;
@@ -41,10 +41,10 @@ public class Attribute {
 	public void setChecked(Boolean checked) {
 		this.checked = checked;
 	}
-	public Integer getFactor() {
+	public String getFactor() {
 		return factor;
 	}
-	public void setFactor(Integer factor) {
+	public void setFactor(String factor) {
 		this.factor = factor;
 	}
 	

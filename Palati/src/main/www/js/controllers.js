@@ -37,6 +37,10 @@ angular.module('palati.controllers', [])
 	$scope.quickPullUp = function(){
 		QRLkpService.lookup();
 	};
+	//Remove below in production
+	$scope.devPullUp = function(){
+		QRLkpService.devLookup();
+	};
 
 })
 
@@ -47,7 +51,7 @@ angular.module('palati.controllers', [])
 })
 
 //A simple controller that fetches a list of data from a service
-.controller('WineIndexCtrl', function($scope, WineService) {
+.controller('WineIndexCtrl', function($scope, WineService, TastingService) {
 	// "WineService" is a service returning mock data (services.js)
 	$scope.wines = WineService.all();
 	$scope.winery = WineService.getWinery();
@@ -57,13 +61,14 @@ angular.module('palati.controllers', [])
 		tasting['wineryId'] = $scope.winery.id;
 		tasting['date'] = new Date();
 		console.log($scope.wines);
+		TastingService.saveTasting(tasting);
 	};
 })
 
 
 .controller('WineDetailCtrl', function($scope, $stateParams, $rootScope, $ionicModal, WineService) {
 
-	$rootScope.wine = WineService.get($stateParams.wineId);
+	$rootScope.wine = WineService.get($stateParams.wineSeqNum);
 	$scope.attributesBtn = [{type: 'button-icon ion-waterdrop', tap: function(e) {$scope.modal.show();}}];
 
 	$ionicModal.fromTemplateUrl('templates/attributes.html', function(modal) {
