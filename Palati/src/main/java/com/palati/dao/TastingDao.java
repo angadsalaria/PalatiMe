@@ -17,8 +17,8 @@ public class TastingDao {
 	MongoTemplate mongoTemplate;
 	
 
-	public List<Tasting> getUserTastings(String user) {
-		Query query = new Query(Criteria.where("user").is(user));
+	public List<Tasting> getUserTastings() {
+		Query query = new Query();
 		List<Tasting> tasting = mongoTemplate.find(query, Tasting.class);
 		return tasting;
 	}

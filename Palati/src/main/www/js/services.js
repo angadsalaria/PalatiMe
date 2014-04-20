@@ -131,4 +131,27 @@ angular.module('palati.services', [])
 	};
 })
 
+
+.factory('ArchiveService', function($http,baseURL) {
+	var tasting = null;
+	var tastings = null;
+	return {
+		getCurrentTasting: function(){
+			return tasting;
+		},
+		setCurrentTasting: function(selectedTasting){
+			tasting = selectedTasting;
+		},
+		getTasting: function(tastingId){
+			return tastings[tastingId];
+		},
+		getTastings: function(){
+			return $http({method: 'GET', url: baseURL + 'tastings.json'});
+		},
+		setTastings: function(latestTastings){
+			tastings = latestTastings;
+		}
+	};
+})
+
 ;

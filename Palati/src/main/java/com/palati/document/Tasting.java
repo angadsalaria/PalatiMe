@@ -1,9 +1,9 @@
 package com.palati.document;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "tasting")
 public class Tasting {
@@ -15,7 +15,6 @@ public class Tasting {
 	private Date date;
 	private List<String> metadata;
 	private String user;
-	@DBRef
 	private Winery winery;
 	
 	public String getId() {

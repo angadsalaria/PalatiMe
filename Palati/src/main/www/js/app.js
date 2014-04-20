@@ -75,7 +75,8 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
       url: '/archive',
       views: {
         'archive-tab': {
-          templateUrl: 'templates/archive.html'
+          templateUrl: 'templates/archive.html',
+          controller: 'ArchiveCtrl'
         }
       }
     })
@@ -83,13 +84,23 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
     .state('tab.archived-tasting', {
       url: '/tasting/:tastingId',
       views: {
-        'wines-tab': {
+        'archive-tab': {
           templateUrl: 'templates/archived-tasting.html',
-          controller: 'WineDetailCtrl'
+          controller: 'ArchiveDetailCtrl'
         }
       }
     })
-
+    
+    .state('tab.tasted-wine', {
+      url: '/tastedwine/:wineSeqNum',
+      views: {
+        'archive-tab': {
+          templateUrl: 'templates/tasted-wine.html',
+          controller: 'TastedWineCtrl'
+        }
+      }
+    })
+    
     .state('tab.winery', {
       url: '/winery',
       views: {

@@ -94,10 +94,6 @@ angular.module('palati.controllers', [])
 	$scope.basicList = $rootScope.wine.basicList;
 	$scope.extendedList = $rootScope.wine.extendedList;
 	
-	//$scope.basicList = AttributesService.getBasicList();
-	
-	//$scope.extendedList = AttributesService.getExtendedList();
-	
 	$scope.attributeReset = function(){
 		angular.forEach($scope.basicList, function(value, key){
 			value.checked=true;
@@ -121,4 +117,25 @@ angular.module('palati.controllers', [])
 	$scope.lookupWinery = function() {
 		QRLkpService.lookup();
 	};
-});
+})
+
+.controller('ArchiveCtrl', function($scope, ArchiveService) {
+	$scope.tastings = {};
+	ArchiveService.getTastings()
+	.then(function(success){
+		$scope.tastings = success.data;
+		ArchiveService.setTastings(success.data);
+	},function(error){});
+})
+
+.controller('ArchiveDetailCtrl', function($scope, $rootScope, $stateParams, ArchiveService) {
+	
+	$rootScope.tasting = ArchiveService.getTasting($stateParams.tastingId);
+	
+})
+
+.controller('TastedWineCtrl', function($scope, $rootScope, $stateParams, ArchiveService) {
+	$scope.wine = $rootScope.tasting.wines[$stateParams.wineSeqNum];	
+})
+
+;

@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Document(collection = "wines")
-@JsonIgnoreProperties({"id"})
+//@JsonIgnoreProperties({"id"})
 public class Wine {
 
 	@Id

@@ -9,18 +9,16 @@
 	<ion-content has-header="true" padding="true">
 		<div class="card">
 			<div class="item item-text-wrap">
-				<p>PalatiMe for {{tasting.winery.wines.length}} wines at {{ tasting.winery.name }} tasted on {{tasting.date}}</p>
+				<p>{{tasting.wines.length}} wines tasted at {{ tasting.winery.name }} located in {{tasting.winery.addrCity}}, {{tasting.winery.addrState}} on {{tasting.date | date}}</p>
 			</div>
 		</div>
 
-	<div class="list list-inset">
-      <div class="item item-divider"> 
+
+     <ion-list>
+		<div class="item item-divider"> 
           Wines
         </div>
-     </div>
-     <ion-list>
-
-      <ion-item ng-repeat="wine in tasting.winery.wines" type="item-text-wrap" href="#/tab/wine/{{wine.seqNum}}">
+      <ion-item ng-repeat="wine in tasting.wines" type="item-text-wrap" href="#/tab/tastedwine/{{wine.seqNum}}">
        	<h3>{{wine.title}}</h3>
         <p>{{wine.description}}</p>
       </ion-item>
