@@ -141,8 +141,8 @@ angular.module('palati.controllers', [])
 
 .controller('TabsCtrl', function($scope, AuthService) {
 	$scope.displayAsSignedIn = function(){
-		return AuthService.isUserLoggedIn();
-	
+		//return AuthService.isUserLoggedIn();
+		return true;
 	};
 		
 })

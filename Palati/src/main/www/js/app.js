@@ -3,7 +3,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
+angular.module('palati', ['ionic', 'palati.services', 'palati.controllers', 'palati.filters'])
 .factory('AuthProvider', function(){
 	var auth0 = new Auth0Client(
 		    "palatime.auth0.com",

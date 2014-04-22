@@ -6,7 +6,7 @@
   	<div class="list list-inset">
 	  <label class="item item-input">
 	    <i class="icon ion-search placeholder-icon"></i>
-	    <input type="text" placeholder="Search Zip">
+	    <input ng-init="searchText.zip=''" ng-model="searchText.zip" type="text" placeholder="Search Zip">
 	  </label>
 	</div>
 
@@ -14,7 +14,7 @@
       <div class="item item-divider"> 
           Recent Visits
         </div>
-      <ion-item ng-repeat="tasting in tastings" type="item-text-wrap" href="#/tab/tasting/{{tasting.id}}">
+      <ion-item ng-repeat="tasting in tastings | tastingsFilter:searchText" type="item-text-wrap" href="#/tab/tasting/{{tasting.id}}">
         <h3>{{tasting.winery.name}}, {{tasting.winery.addrCity}}, {{tasting.winery.addrState}}</h3>
         <p><i>Visited on {{tasting.date | date}}</i></p>
       </ion-item>

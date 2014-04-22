@@ -154,4 +154,14 @@ angular.module('palati.services', [])
 	};
 })
 
+.factory('strngUtils', function(){
+	  return{
+	    compareStr: function(stra, strb){
+	      stra = ("" + stra).toLowerCase();
+	      strb = ("" + strb).toLowerCase();
+	      return stra.indexOf(strb) !== -1;
+	    }
+	  };
+	})
+
 ;
