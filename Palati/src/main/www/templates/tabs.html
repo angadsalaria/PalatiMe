@@ -19,13 +19,13 @@
   
   
   <!-- Register Tab -->
-  <ion-tab title="Archive" icon="icon ion-ios7-box" href="#/tab/archive">
+  <ion-tab ng-if="displayAsSignedIn()" title="Archive" icon="icon ion-ios7-box" href="#/tab/archive">
     <ion-nav-view name="archive-tab"></ion-nav-view>
   </ion-tab>
 
 
    <!-- Sign Out Tab -->
-  <ion-tab title="SignOut" icon="icon ion-log-out" href="#/logout">
+  <ion-tab ng-if="displayAsSignedIn()" title="SignOut" icon="icon ion-log-out" href="#/logout">
       
   </ion-tab>
 

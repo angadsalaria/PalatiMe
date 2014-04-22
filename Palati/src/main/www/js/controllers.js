@@ -119,7 +119,8 @@ angular.module('palati.controllers', [])
 	};
 })
 
-.controller('ArchiveCtrl', function($scope, ArchiveService) {
+.controller('ArchiveCtrl', function($scope, ArchiveService, AuthService) {
+	AuthService.setUser('Angad');
 	$scope.tastings = {};
 	ArchiveService.getTastings()
 	.then(function(success){
@@ -136,6 +137,14 @@ angular.module('palati.controllers', [])
 
 .controller('TastedWineCtrl', function($scope, $rootScope, $stateParams, ArchiveService) {
 	$scope.wine = $rootScope.tasting.wines[$stateParams.wineSeqNum];	
+})
+
+.controller('TabsCtrl', function($scope, AuthService) {
+	$scope.displayAsSignedIn = function(){
+		return AuthService.isUserLoggedIn();
+	
+	};
+		
 })
 
 ;

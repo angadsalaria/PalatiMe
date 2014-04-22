@@ -47,7 +47,8 @@ angular.module('palati', ['ionic', 'palati.services', 'palati.controllers'])
     .state('tab', {
       url: "/tab",
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: "templates/tabs.html",
+      controller: 'TabsCtrl'
     })
 
     // the wine tab has its own child nav-view and history
