@@ -3,6 +3,7 @@ package com.palati.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -19,6 +20,7 @@ public class TastingDao {
 
 	public List<Tasting> getUserTastings() {
 		Query query = new Query();
+		query.with(new Sort(Sort.Direction.DESC,"date"));
 		List<Tasting> tasting = mongoTemplate.find(query, Tasting.class);
 		return tasting;
 	}

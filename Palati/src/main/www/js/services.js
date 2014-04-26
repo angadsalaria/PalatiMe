@@ -25,6 +25,7 @@ angular.module('palati.services', [])
 			AuthProvider.client().logout(function(){
 				$http({method: 'GET', url: AuthProvider.getLogoutURL()})
 				.then(function(success){
+					user = null;
 					$state.go('login');
 				},function(error){});
 			});
@@ -86,21 +87,18 @@ angular.module('palati.services', [])
 	};
 })
 
-.factory('TastingService', function($http,baseURL, AuthService, $ionicPopup) {
+.factory('TastingService', function($http,baseURL, $state, AuthService, $ionicPopup) {
 	return {
-		lookupTasting: function() {
-			
-		},
 		saveTasting: function(tasting){
 			$http({method: 'POST', url: baseURL + 'saveTasting.do', data: tasting})
 			.then(function(success){
-				 $ionicPopup.alert({
-			          title: 'Hurray!',
-			          content: 'Tasting saved.'
-			        }).then(function(res) {
-			          console.log('Ooops...');
-			        });
-			},function(error){});
+				$ionicPopup.alert({
+					title: 'Done!',
+					content: 'Tasting archived.'
+				}).then(function(res) {
+					  $state.go('tab.archive');
+				});
+			},function(error){});;
 		}
 	};
 })
@@ -108,22 +106,22 @@ angular.module('palati.services', [])
 .factory('QRLkpService', function(WineService) {
 	return {
 		lookup: function() {
-			
+
 			var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-	        scanner.scan( function (result) {
-	         /*   alert("We got a "+result.format+"\n" + 
+			scanner.scan( function (result) {
+				/*   alert("We got a "+result.format+"\n" + 
 	            "Result: " + result.text + "\n" +             
 	            "Cancelled: " + result.cancelled); */ 
-	        	if(result.text!=null && result.text!=''){
-	        		WineService.initialize(result.text);
-	        	}
-	        	else
-	            if(result.cancelled){
-	            	WineService.initialize(10001);
-	            }
-	        }, function (error) { 
-	            alert("Scanning failed: " + error); 
-	        } );
+				if(result.text!=null && result.text!=''){
+					WineService.initialize(result.text);
+				}
+				else
+					if(result.cancelled){
+						WineService.initialize(10001);
+					}
+			}, function (error) { 
+				alert("Scanning failed: " + error); 
+			} );
 		},
 		devLookup: function(){
 			WineService.initialize(10001);
@@ -155,13 +153,13 @@ angular.module('palati.services', [])
 })
 
 .factory('strngUtils', function(){
-	  return{
-	    compareStr: function(stra, strb){
-	      stra = ("" + stra).toLowerCase();
-	      strb = ("" + strb).toLowerCase();
-	      return stra.indexOf(strb) !== -1;
-	    }
-	  };
-	})
+	return{
+		compareStr: function(stra, strb){
+			stra = ("" + stra).toLowerCase();
+			strb = ("" + strb).toLowerCase();
+			return stra.indexOf(strb) !== -1;
+		}
+	};
+})
 
 ;

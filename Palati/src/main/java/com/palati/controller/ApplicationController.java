@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.auth0.jwt.JWTVerifier;
 import com.palati.dao.NamesDao;
 import com.palati.util.ConstUtil;
+import com.palati.util.JWTUtil;
 
 @Controller
 public class ApplicationController {
@@ -43,8 +44,7 @@ public class ApplicationController {
 	@ResponseBody
 	@RequestMapping(value = "/verifyToken.do", method = RequestMethod.GET)
 	public String verifyToken(@RequestParam String token) throws InvalidKeyException, NoSuchAlgorithmException, IllegalStateException, SignatureException, IOException{
-		
-		Map<String,Object> decodedPayload =  new JWTVerifier(ConstUtil.JWT_SECRET, ConstUtil.JWT_AUDIENCE).verify(token);
+		Map<String,Object> decodedPayload = JWTUtil.getPayload(token);
 		System.out.println(decodedPayload.get("name") + " logged in");
 		return "success";	
 	}
