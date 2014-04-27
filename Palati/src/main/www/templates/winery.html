@@ -1,13 +1,14 @@
 <!--
   This template loads for the 'tab.about' state (app.js)
 -->
-<ion-view title="Trump Winery">
- 	<ion-nav-buttons side="right">
+<ion-view title="{{winery.name | nullParser: 'Winery'}}">
+ 	<ion-nav-buttons side="right" ng-if="winery">
       <button class="button button-icon ion-camera" ng-click="lookupWinery()">
         
       </button>
     </ion-nav-buttons>
   <ion-content has-header="true" has-tabs="true" padding="true">
+  <div ng-if="winery">
    	<br>
     <p>
       Wine Enthusiast's Highest Rated Wine in Virginia and 2013 Rising Star Winner.
@@ -26,6 +27,16 @@
       Charlottesville, VA 22902 <br>
       Contact: 434-977-3895 | Tasting Room: 434-984-4855
     </p>
-   
+   </div>
+<div ng-if="!winery" class="card card-rounded">
+	<br><br>
+	<div class="item item-text-wrap card-rounded">
+		<div align="center">Pull up a winery.</div>
+		<span class="round-button round-button-padded" class="round-button">
+			<span class="ion-android-camera" ng-click="lookupWinery()"></span>
+		</span>
+	</div>	
+
+</div>
   </ion-content>
 </ion-view>

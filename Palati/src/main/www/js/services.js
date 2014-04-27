@@ -1,7 +1,7 @@
 angular.module('palati.services', [])
 
 
-.factory('AuthService', function($http, baseURL, $state, AuthProvider){
+.factory('AuthService', function($http, baseURL, $state, AuthProvider, WineService){
 	var user = null;
 	return{
 		setUser: function(loggedInUser){
@@ -26,6 +26,7 @@ angular.module('palati.services', [])
 				$http({method: 'GET', url: AuthProvider.getLogoutURL()})
 				.then(function(success){
 					user = null;
+					WineService.reset();
 					$state.go('login');
 				},function(error){});
 			});
@@ -56,6 +57,10 @@ angular.module('palati.services', [])
 		},
 		getWinery: function(){
 			return winery;
+		},
+		reset: function(){
+			winery = null;
+			wines = null;
 		}
 	};
 })
@@ -90,7 +95,7 @@ angular.module('palati.services', [])
 .factory('TastingService', function($http,baseURL, $state, AuthService, $ionicPopup) {
 	return {
 		saveTasting: function(tasting){
-			$http({method: 'POST', url: baseURL + 'saveTasting.do', data: tasting})
+			$http({method: 'POST', url: baseURL + 'saveTasting.do', data: tasting, params: {token : AuthService.getToken()}})
 			.then(function(success){
 				$ionicPopup.alert({
 					title: 'Done!',
@@ -130,7 +135,7 @@ angular.module('palati.services', [])
 })
 
 
-.factory('ArchiveService', function($http,baseURL) {
+.factory('ArchiveService', function($http, baseURL, AuthService) {
 	var tasting = null;
 	var tastings = null;
 	return {
@@ -144,7 +149,7 @@ angular.module('palati.services', [])
 			return tastings[tastingId];
 		},
 		getTastings: function(){
-			return $http({method: 'GET', url: baseURL + 'tastings.json'});
+			return $http({method: 'GET', url: baseURL + 'tastings.json',  params: {token : AuthService.getToken()}});
 		},
 		setTastings: function(latestTastings){
 			tastings = latestTastings;

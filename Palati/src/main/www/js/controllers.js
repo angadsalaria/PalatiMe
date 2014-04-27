@@ -51,7 +51,8 @@ angular.module('palati.controllers', [])
 })
 
 //A simple controller that fetches a list of data from a service
-.controller('WineIndexCtrl', function($scope, $ionicPopup, $state, AuthProvider, AuthService, WineService, TastingService) {
+.controller('WineIndexCtrl', function($scope, $ionicPopup, $state, AuthProvider, AuthService, 
+		WineService, TastingService, QRLkpService) {
 	// "WineService" is a service returning mock data (services.js)
 	$scope.wines = WineService.all();
 	$scope.winery = WineService.getWinery();
@@ -127,6 +128,9 @@ angular.module('palati.controllers', [])
 		        });
 		},function(error){});*/
 	};
+	$scope.lookupWinery = function(){
+		QRLkpService.lookup();
+	};
 })
 
 
@@ -177,7 +181,8 @@ angular.module('palati.controllers', [])
 })
 
 
-.controller('WineryCtrl', function($scope, QRLkpService) {
+.controller('WineryCtrl', function($scope, QRLkpService, WineService) {
+	$scope.winery = WineService.getWinery();
 	$scope.lookupWinery = function() {
 		QRLkpService.lookup();
 	};

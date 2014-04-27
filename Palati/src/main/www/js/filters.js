@@ -10,4 +10,16 @@ angular.module('palati.filters', [])
 		});
 		return result;
 	};
-});
+})
+
+.filter('nullParser', function(){
+	  return function(input, placeholder){
+	    if(!(input == undefined || input == null || (input===''))){
+	      return input;
+	    } else {
+	      return placeholder;
+	    }
+	  };
+	})
+	
+;
