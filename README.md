@@ -21,9 +21,7 @@ Data Access
 
 UI and Client Side 
 -
-* HTML5
-* CSS3
-* Javascript
+* HTML5, CSS3, Javascript
 * Ajax
 * AngularJS v1.2.16
 * IonicFramework v1.0.0-beta
