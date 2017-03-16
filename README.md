@@ -35,3 +35,6 @@ PhoneGap  & PhoneGap plugins
 * Auth0 v1.1.0
 * In-app browser v0.3.3 
 
+
+Deployment Cycle:
+![Alt text](http://i.imgur.com/EeHxI9l.png "Deployment Cycle")
