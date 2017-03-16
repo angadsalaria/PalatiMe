@@ -37,4 +37,5 @@ PhoneGap  & PhoneGap plugins
 
 
 Deployment Cycle:
+-
 ![Alt text](http://i.imgur.com/EeHxI9l.png "Deployment Cycle")
